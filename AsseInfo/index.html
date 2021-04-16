@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Prova AsseInfo</title>
+    
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">   
+
+    <script type="text/javascript">
+    	var sequencia_numero = []; 
+    	function sequencia(){
+    		var num = document.getElementById('numero').value;     		
+    		if (num > 0) {
+    			var soma = 0;
+    			var media = 0;    			
+
+	    		sequencia_numero.push(num);
+	    		document.getElementById('numero').value = '';
+	    		document.getElementById('numero').focus();
+	    		document.getElementById('sequencia').value = sequencia_numero;
+
+	    		//maior e menor valor
+	    		var maior = Number.NEGATIVE_INFINITY;
+				var menor = Infinity;
+
+				sequencia_numero.forEach(function(item){
+				  if (Number(item) > maior) maior = item;
+				  if (Number(item) < menor) menor = item;
+				});
+
+				document.getElementById('maximo').value = maior;
+				document.getElementById('minimo').value = menor;
+				
+				//quantidade de números em array				
+				soma = sequencia_numero.length;              			 
+        		document.getElementById('numero_elementos').value = soma;
+
+        		//média dos itens
+        		for (i=0; i < sequencia_numero.length; i++){
+        			media = media + parseInt(sequencia_numero[i]);        			
+        		}
+				document.getElementById('media').value = media/soma;
+				
+				
+    		}
+    		
+    	}
+    </script>
+
+  </head>
+<body>
+	<header>
+		<center>
+			<h1>Calculando estatísticas simples</h1>
+		</center>
+	</header>
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<form>
+					<label for="numero">Digite o número a ser inserido na sequência:</label>
+					<input type="text" id="numero" autofocus>
+					<input type="button" name="inserir" class="btn btn-button btn-info" onclick="sequencia()" value="Inserir">						
+				</form>				
+				<hr>
+				
+				<p>
+					Sequência numérica: <input type="text" id="sequencia" disabled="">
+				</p>
+				<p>
+
+				<p>
+					Valor mínimo: <input type="text" id="minimo" disabled="">
+				</p>
+				<p>
+					Valor máximo: <input type="text" id="maximo" disabled="">
+				</p>
+				<p>
+					Número de elementos: <input type="text" id="numero_elementos" disabled="">
+				</p>
+				<p>
+					Média: <input type="text" id="media" disabled="">
+				</p>
+
+			</div>			
+		</div>		
+	</section>
+
+	<footer>
+		<center>
+			<h6>Exercício resolvido em 15/04/2021</h6> 
+		</center>
+	</footer>
+</body>
+</html>
